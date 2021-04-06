@@ -7,40 +7,56 @@
     <script src="./jquery-1.12.4.min.js"></script>
     <script>
       $(function () {
-        $('#target').keydown(function (event) {
-          $('.div').text(event.keyCode);
-          //keyup, keypress
+        $('.btn-show').click(function () {
+          $('#abc').show();
         });
-
-        $('.box').click(function () {
-          console.log('클릭!');
+        $('.btn-hide').click(function () {
+          $('#abc').hide(1000);
         });
-        $('.box').dblclick(function () {
-          console.log('더블 클릭!');
+        $('.btn-toggle').click(function () {
+          $('#abc').toggle('slow');
         });
-        $('.box').mouseenter(function () {
-          console.log('마우스 엔터');
+        $('.btn-fadeIn').click(function () {
+          $('#abc').fadeIn('slow');
         });
-        $('.box').mouseleave(function () {
-          console.log('마우스 리브 - mouseout은 버블링이 있음');
+        $('.btn-fadeOut').click(function () {
+          $('#abc').fadeOut('slow');
         });
-        $('.box2').mousemove(function (event) {
-          console.log(`마우스 무브  X : ${event.pageX}, Y : ${event.pageY}`);
+        $('.btn-fadeToggle').click(function () {
+          $('#abc').fadeToggle('slow', 'linear', function () {
+            console.log('gkdnld');
+          });
         });
-
-        $('li').hover(function () {
-          $(this).append($('<span>***</span>'));
+        $('.btn-fadeTo0').click(function () {
+          $('#abc').fadeTo('slow', 0); //opacity : 0
+        });
+        $('.btn-fadeTo1').click(function () {
+          $('#abc').fadeTo('slow', 1);
+        });
+        $('.btn-slidUp').click(function () {
+          $('#abc').slideUp();
+        });
+        $('.btn-slideDown').click(function () {
+          $('#abc').slideDown('slow', 'linear', console.log('아앙'));
+        });
+        $('.btn-slideToggle').click(function () {
+          $('#abc').slideToggle();
         });
       });
     </script>
   </head>
   <body>
-    <input type="text" id="target" />
-    <div class="div"></div>
-    <div class="box"></div>
-    <div class="box2"></div>
-    <ul>
-      <li></li>
-    </ul>
+    <button class="btn-show">show</button>
+    <button class="btn-hide">hide</button>
+    <button class="btn-toggle">toggle</button>
+    <button class="btn-fadeIn">fadeIn</button>
+    <button class="btn-fadeOut">fadeOut</button>
+    <button class="btn-fadeToggle">fadeToggle</button>
+    <button class="btn-fadeTo0">fadeTo0</button>
+    <button class="btn-fadeTo1">fadeTo1</button>
+    <button class="btn-slidUp">slidUp</button>
+    <button class="btn-slideDown">slideDown</button>
+    <button class="btn-slideToggle">slideToggle</button>
+    <div id="abc" style="display: none">안녕하셔용</div>
   </body>
 </html>
