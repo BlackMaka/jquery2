@@ -6,25 +6,19 @@
     <script src="./jquery-1.12.4.min.js"></script>
     <script>
       $(function () {
-        $('#html').click(function () {
-          $.getJSON('test.json', function (data) {
-            $('#result').html(data.name);
-          })
-            .done(function () {
-              console.log('success');
-            })
-            .fail(function () {
-              console.log('fail');
-            })
-            .always(function () {
-              console.log('finished');
-            });
+        $('form').submit(function (event) {
+          console.log($(this).serialize());
+          event.preventDefault();
         });
       });
     </script>
   </head>
   <body>
-    <button id="html">요청</button>
-    <div id="result"></div>
+    <form>
+      <input type="text" name="a" value="1" />
+      <input type="text" name="b" value="2" />
+      <input type="hidden" name="c" value="3" />
+      <input type="submit" value="전송" />
+    </form>
   </body>
 </html>
