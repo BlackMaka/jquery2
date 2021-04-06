@@ -6,33 +6,37 @@
     <link rel="stylesheet" href="./style.css" />
     <script src="./jquery-1.12.4.min.js"></script>
     <script>
-      window.onload = function () {
-        console.log('onload1');
-      };
-      window.onload = function () {
-        console.log('onload2');
-      };
-      $(document).ready(function () {
-        console.log('ready1');
-      });
-      $(document).ready(function () {
-        console.log('ready2');
-      });
-
       $(function () {
-        const message = 'hello';
-        $('div').bind('click', { msg: message }, function (event) {
-          console.log('button click !!', event.data.msg);
-          event.stopPropagation(); //이벤트 버블링 방지
-          event.preventDefault(); // form 새로고침 방지
-          return false; //둘 다 한번에 방지
+        $('#create').on('click', function () {
+          $('div').html('<button id="newBtn">new button</button>');
         });
+        $('body').on('click', '#newBtn', function () {
+          console.log('newBtn 클릭');
+        });
+        //bind는 동적으로 생성되는 버튼이 한번 자동 실행됨 on으로 사용하자.
+
+        $('#one1').one('click', function () {
+          console.log('한번만 실행');
+        });
+        $('#one2').on('click', function (event) {
+          console.log('한번만 실행');
+          $(this).off(event);
+        });
+
+        $('#trigger').on('click', function () {
+          console.log('트리거 자동실행');
+        });
+        $('#trigger').trigger('click');
       });
     </script>
   </head>
   <body>
-    <div>
-      <div id="foo">버튼 div</div>
-    </div>
+    <button id="create">btnCreate</button>
+    <div></div>
+    <hr />
+    <button id="one1">한번만 실행</button>
+    <button id="one2">한번만 실행</button>
+    <hr />
+    <button id="trigger">트리거</button>
   </body>
 </html>
