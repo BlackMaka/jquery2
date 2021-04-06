@@ -7,36 +7,26 @@
     <script src="./jquery-1.12.4.min.js"></script>
     <script>
       $(function () {
-        $('#create').on('click', function () {
-          $('div').html('<button id="newBtn">new button</button>');
-        });
-        $('body').on('click', '#newBtn', function () {
-          console.log('newBtn 클릭');
-        });
-        //bind는 동적으로 생성되는 버튼이 한번 자동 실행됨 on으로 사용하자.
+        let handler = function (event) {
+          console.log('hello');
+        };
+        $('#foo').bind('click', handler);
+        $('#foo').unbind('click', handler);
+        // function을 공유해야 제대로 이벤트가 동작하지 않는다.
 
-        $('#one1').one('click', function () {
-          console.log('한번만 실행');
+        $('#off1').on('click', function (event) {
+          $('#off2').off('click');
+          console.log('off2 클릭이 이벤트가 사라졌당.');
         });
-        $('#one2').on('click', function (event) {
-          console.log('한번만 실행');
-          $(this).off(event);
+        $('#off2').on('click', function (event) {
+          console.log('off2 클릭이 이벤트!!!');
         });
-
-        $('#trigger').on('click', function () {
-          console.log('트리거 자동실행');
-        });
-        $('#trigger').trigger('click');
       });
     </script>
   </head>
   <body>
-    <button id="create">btnCreate</button>
-    <div></div>
-    <hr />
-    <button id="one1">한번만 실행</button>
-    <button id="one2">한번만 실행</button>
-    <hr />
-    <button id="trigger">트리거</button>
+    <button id="foo">버튼</button>
+    <button id="off1">버튼1</button>
+    <button id="off2">버튼2</button>
   </body>
 </html>
