@@ -7,56 +7,28 @@
     <script src="./jquery-1.12.4.min.js"></script>
     <script>
       $(function () {
-        $('.btn-show').click(function () {
-          $('#abc').show();
+        $('.btn-ani1').click(function () {
+          $('#abc')
+            .animate({ fontSize: '30px', opacity: 0.4 }, 1000, 'linear', console.log('hi'))
+            .animate({ fontSize: '5px' });
+          console.log($('#abc').queue('fx').length); //실행중인 애니메이션 개수
         });
-        $('.btn-hide').click(function () {
-          $('#abc').hide(1000);
+        $('.go').click(function () {
+          $('#run').stop().slideToggle();
         });
-        $('.btn-toggle').click(function () {
-          $('#abc').toggle('slow');
-        });
-        $('.btn-fadeIn').click(function () {
-          $('#abc').fadeIn('slow');
-        });
-        $('.btn-fadeOut').click(function () {
-          $('#abc').fadeOut('slow');
-        });
-        $('.btn-fadeToggle').click(function () {
-          $('#abc').fadeToggle('slow', 'linear', function () {
-            console.log('gkdnld');
-          });
-        });
-        $('.btn-fadeTo0').click(function () {
-          $('#abc').fadeTo('slow', 0); //opacity : 0
-        });
-        $('.btn-fadeTo1').click(function () {
-          $('#abc').fadeTo('slow', 1);
-        });
-        $('.btn-slidUp').click(function () {
-          $('#abc').slideUp();
-        });
-        $('.btn-slideDown').click(function () {
-          $('#abc').slideDown('slow', 'linear', console.log('아앙'));
-        });
-        $('.btn-slideToggle').click(function () {
-          $('#abc').slideToggle();
+        $('.delay').click(function () {
+          $('#delay').delay(1000).slideToggle();
+          jQuery.fx.off = !jQuery.fx.off; //애니메이션 효과 제거
         });
       });
     </script>
   </head>
   <body>
-    <button class="btn-show">show</button>
-    <button class="btn-hide">hide</button>
-    <button class="btn-toggle">toggle</button>
-    <button class="btn-fadeIn">fadeIn</button>
-    <button class="btn-fadeOut">fadeOut</button>
-    <button class="btn-fadeToggle">fadeToggle</button>
-    <button class="btn-fadeTo0">fadeTo0</button>
-    <button class="btn-fadeTo1">fadeTo1</button>
-    <button class="btn-slidUp">slidUp</button>
-    <button class="btn-slideDown">slideDown</button>
-    <button class="btn-slideToggle">slideToggle</button>
-    <div id="abc" style="display: none">안녕하셔용</div>
+    <button class="btn-ani1">ani1</button>
+    <div id="abc">안녕하셔용</div>
+    <button class="go">run</button>
+    <div id="run">RUN</div>
+    <button class="delay">delay</button>
+    <div id="delay">delay</div>
   </body>
 </html>
