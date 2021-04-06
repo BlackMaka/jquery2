@@ -14,10 +14,9 @@
               v1: $('#v1').val(),
               v2: $('#v2').val(),
             },
-            dataType: 'text',
+            dataType: 'json',
             success: function (res, status, xhr) {
-              console.log(res);
-              $('#result').text(res);
+              $('#result').text(res.result);
             },
             error: function (xhr, status, error) {
               console.log(error);
