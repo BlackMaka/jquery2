@@ -8,32 +8,35 @@
     <script>
       $(function () {
         const arr = [1, 2, 3, 4, 5];
-        const rtnArr = jQuery.map(arr, function (item, idx) {
-          return item + 1;
+        console.log(jQuery.inArray(4, arr)); //0, 1, 2, 3, 4  3번째
+        console.log('=============================================');
+
+        console.log(`jQuery.isArray(arr) : ${jQuery.isArray(arr)}`);
+
+        console.log('=============================================');
+        const blankStr = '     안       녕       ';
+        console.log(blankStr);
+        console.log(jQuery.trim(blankStr));
+
+        console.log('=============================================');
+        const obj = {};
+        console.log(`jQuery.isEmptyObject(obj) : ${jQuery.isEmptyObject(obj)}`);
+
+        console.log('=============================================');
+        const num = [123, '123', '0xff'];
+        jQuery.each(num, function (idx, item) {
+          console.log(`jQuery.isNumeric(${idx}) = ${item} : ${jQuery.isNumeric(item)}`);
         });
-        console.log(`rtnArr : ${rtnArr}`);
 
-        const Aarr = [1, 2];
-        const Barr = [4, 6, 7, 8];
-        const mergeArr = jQuery.merge(Aarr, Barr);
-        console.log(`mergeArr : ${mergeArr}`);
-
-        const obj1 = { apple: 1, banana: 2 };
-        const obj2 = { orange: 3, mango: 4 };
-        const mergObj = jQuery.extend(obj1, obj2);
-        console.log(`mergObj : ${JSON.stringify(mergObj)}`);
-
-        const divList = jQuery.makeArray($('div'));
-        const itemList = jQuery.map(divList, function (item, idx) {
-          return $(item).text();
-        });
-        console.log(itemList);
+        console.log('=============================================');
+        const obj1 = {};
+        const obj2 = new Object();
+        const obj3 = 'hello';
+        console.log(`jQuery.isPlainObject(obj1) : ${jQuery.isPlainObject(obj1)}`);
+        console.log(`jQuery.isPlainObject(obj2) : ${jQuery.isPlainObject(obj2)}`);
+        console.log(`jQuery.isPlainObject(obj3) : ${jQuery.isPlainObject(obj3)}`);
       });
     </script>
   </head>
-  <body>
-    <div>item1</div>
-    <div>item2</div>
-    <div>item3</div>
-  </body>
+  <body></body>
 </html>
