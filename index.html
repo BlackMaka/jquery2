@@ -3,32 +3,34 @@
   <head>
     <meta charset="UTF-8" />
     <title>Document</title>
-    <link rel="stylesheet" href="./style.css" />
     <script src="./jquery-1.12.4.min.js"></script>
     <script>
       $(function () {
-        $('.btn-ani1').click(function () {
-          $('#abc')
-            .animate({ fontSize: '30px', opacity: 0.4 }, 1000, 'linear', console.log('hi'))
-            .animate({ fontSize: '5px' });
-          console.log($('#abc').queue('fx').length); //실행중인 애니메이션 개수
-        });
-        $('.go').click(function () {
-          $('#run').stop().slideToggle();
-        });
-        $('.delay').click(function () {
-          $('#delay').delay(1000).slideToggle();
-          jQuery.fx.off = !jQuery.fx.off; //애니메이션 효과 제거
+        $('#btn').click(function () {
+          $.ajax({
+            type: 'get',
+            url: 'index.jsp',
+            data: {
+              v1: $('#v1').val(),
+              v2: $('#v2').val(),
+            },
+            dataType: 'text',
+            success: function (res, status, xhr) {
+              console.log(res);
+              $('#result').text(res);
+            },
+            error: function (xhr, status, error) {
+              console.log(error);
+            },
+          });
         });
       });
     </script>
   </head>
   <body>
-    <button class="btn-ani1">ani1</button>
-    <div id="abc">안녕하셔용</div>
-    <button class="go">run</button>
-    <div id="run">RUN</div>
-    <button class="delay">delay</button>
-    <div id="delay">delay</div>
+    <input type="text" name="v1" id="v1" />
+    <input type="text" name="v2" id="v2" />
+    <button id="btn">계산</button>
+    <div id="result"></div>
   </body>
 </html>
