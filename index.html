@@ -6,56 +6,33 @@
     <link rel="stylesheet" href="./style.css" />
     <script src="./jquery-1.12.4.min.js"></script>
     <script>
+      window.onload = function () {
+        console.log('onload1');
+      };
+      window.onload = function () {
+        console.log('onload2');
+      };
+      $(document).ready(function () {
+        console.log('ready1');
+      });
+      $(document).ready(function () {
+        console.log('ready2');
+      });
+
       $(function () {
-        const xmlObj = jQuery.parseXML(`<person><name>lee</name><age>31</age></person>`);
-        const name = $(xmlObj).find('name');
-        const age = $(xmlObj).find('age');
-        console.log(`name : ${name.text()}, age : ${age.text()}`);
-
-        console.log('=======================================');
-        const jsonObj = jQuery.parseJSON(`{ "apple": 1 }`);
-        console.log(jsonObj.apple);
-
-        console.log('=======================================');
-        console.log(jQuery.type(123));
-        console.log(jQuery.type('123'));
-
-        console.log('=======================================');
-        let lis = $('li').get();
-        lis = lis.concat($('li').get());
-        console.log(lis);
-        const list = jQuery.uniqueSort(lis);
-        console.log(list);
-
-        console.log('=======================================');
-        const div = $('div');
-        jQuery.data(div, 'sample', {
-          first: 16,
-          last: 'hi',
+        const message = 'hello';
+        $('div').bind('click', { msg: message }, function (event) {
+          console.log('button click !!', event.data.msg);
+          event.stopPropagation(); //이벤트 버블링 방지
+          event.preventDefault(); // form 새로고침 방지
+          return false; //둘 다 한번에 방지
         });
-        $('span:first').text(jQuery.data(div, 'sample').first);
-        $('span:last').text(jQuery.data(div, 'sample').last);
-
-        console.log('=======================================');
-        $('li').each(function (idx, item) {
-          console.log($(item).text());
-        });
-
-        console.log('=======================================');
-        const $li_list = $('li');
-        console.log($($li_list.get(0)).text());
       });
     </script>
   </head>
   <body>
-    <ul>
-      <li>A</li>
-      <li>B</li>
-      <li>C</li>
-    </ul>
     <div>
-      <span></span>
-      <span></span>
+      <div id="foo">버튼 div</div>
     </div>
   </body>
 </html>
