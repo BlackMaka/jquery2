@@ -7,13 +7,13 @@
     <script src="./jquery-1.12.4.min.js"></script>
     <script>
       $(function () {
-        $('<div> 장군</div>').appendTo('.inner');
-        $('.inner').append('<div>어펜드</div>');
-        $('.inner').append($('h5'));
+        $('.inner').after($('h5'));
+        $('.inner').after('<div>가</div>');
+        $('<div>나</div>').insertAfter('.inner');
 
-        $('<div>(무사) </div>').prependTo('.inner');
-        $('.inner').prepend('<div>프리펜드</div>');
-        // $('.inner').prepend($('h5'));
+        //$('.inner').before($('h5'));
+        $('.inner').before('<div>A</div>');
+        $('<div>B</div>').insertBefore('.inner');
       });
     </script>
   </head>
