@@ -7,46 +7,41 @@
     <script src="./jquery-1.12.4.min.js"></script>
     <script>
       $(function () {
-        $('#target').focus(function () {
-          $(this).css('backgroundColor', 'dodgerblue');
-        });
-        $('#target').blur(function () {
-          $(this).css('backgroundColor', 'yellow');
+        $('select').change(function () {
+          $('div').text($('option:selected').text());
         });
 
-        $('#other').on('click', function () {
-          $('#target').focus();
-        });
-        $('#other2').on('click', function () {
-          $('#target').blur();
+        $('input').select(function () {
+          $('p').text('select...').show().fadeOut(3000);
         });
 
-        //focusin는 이벤트 버블링 지원해줌
-        $('.parent').focusin(function () {
-          console.log('parent focusin');
-        });
-        $('.focusin').focusin(function () {
-          console.log('input focusin');
-        });
-
-        $('.parent').focus(function () {
-          console.log('parent focus');
-        });
-        $('.focusin').focus(function () {
-          console.log('input focus');
+        $('#target').submit(function (event) {
+          let msg = '실패';
+          if ($('.text').val() == 'OK') {
+            msg = '성공';
+          }
+          $('.div').text(msg);
+          event.preventDefault();
         });
       });
     </script>
   </head>
   <body>
-    <form>
-      <input type="text" id="target" />
-    </form>
-    <button id="other">btn1</button>
-    <button id="other2">btn2</button>
+    <select name="sweets">
+      <option>초콜릿</option>
+      <option>캔디</option>
+      <option selected>사탕</option>
+    </select>
+    <div></div>
     <hr />
-    <div class="parent">
-      <input type="text" class="focusin" />
-    </div>
+    <input type="text" value="아이템1 아이템2" />
+    <input type="text" value="" />
+    <p></p>
+    <hr />
+    <form id="target">
+      <input type="text" class="text" />
+      <input type="submit" />
+    </form>
+    <div class="div"></div>
   </body>
 </html>
