@@ -7,22 +7,22 @@
     <script src="./jquery-1.12.4.min.js"></script>
     <script>
       $(function () {
-        $('.btn-add').click(function () {
-          $('.target').addClass('colorClass');
-        });
-        $('.btn-remove').click(function () {
-          $('.target').removeClass('colorClass');
-        });
-        $('.btn-toggle').click(function () {
-          $('.target').toggleClass('colorClass');
-        });
+        $('<div> 장군</div>').appendTo('.inner');
+        $('.inner').append('<div>어펜드</div>');
+        $('.inner').append($('h5'));
+
+        $('<div>(무사) </div>').prependTo('.inner');
+        $('.inner').prepend('<div>프리펜드</div>');
+        // $('.inner').prepend($('h5'));
       });
     </script>
   </head>
   <body>
-    <div class="target">안녕안녕</div>
-    <button class="btn-add">추가</button>
-    <button class="btn-remove">제거</button>
-    <button class="btn-toggle">토글</button>
+    <h5>하윙</h5>
+    <div class="container">
+      <div class="inner">홍길동</div>
+      <div class="inner">고길동</div>
+    </div>
+    <hr />
   </body>
 </html>
