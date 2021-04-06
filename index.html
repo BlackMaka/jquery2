@@ -3,48 +3,26 @@
   <head>
     <meta charset="UTF-8" />
     <title>Document</title>
-
+    <link rel="stylesheet" href="./style.css" />
     <script src="./jquery-1.12.4.min.js"></script>
     <script>
       $(function () {
-        $('.chgImg').click(function () {
-          $('img').attr({
-            src: 'korea.jpg',
-            width: 200,
-            height: 200,
-          });
+        $('.btn-add').click(function () {
+          $('.target').addClass('colorClass');
         });
-        $('.checkAll').click(function () {
-          $('input[type="checkbox"]').prop('checked', true);
+        $('.btn-remove').click(function () {
+          $('.target').removeClass('colorClass');
         });
-        $('.checkNot').click(function () {
-          $('input[type="checkbox"]').removeAttr('checked');
+        $('.btn-toggle').click(function () {
+          $('.target').toggleClass('colorClass');
         });
-        $('.move').click(function () {
-          let text = $('.to').text();
-          $('.to').text('');
-          $('.from').val(text);
-        });
-        let pHtml = $('p:first').html();
-        $('p:last').html(pHtml);
       });
     </script>
   </head>
   <body>
-    <img src="france.png" alt="" />
-    <button class="chgImg">클릭</button>
-
-    <hr />
-    <input type="checkbox" />
-    <input type="checkbox" />
-    <button class="checkAll">체크올</button>
-    <button class="checkNot">체크낫</button>
-    <hr />
-    <div class="to">옮겨줭</div>
-    <input type="text" class="from" />
-    <button class="move">옮기기</button>
-    <hr />
-    <p>퍼스트</p>
-    <p></p>
+    <div class="target">안녕안녕</div>
+    <button class="btn-add">추가</button>
+    <button class="btn-remove">제거</button>
+    <button class="btn-toggle">토글</button>
   </body>
 </html>
