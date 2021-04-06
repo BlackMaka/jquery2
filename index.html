@@ -7,26 +7,46 @@
     <script src="./jquery-1.12.4.min.js"></script>
     <script>
       $(function () {
-        let handler = function (event) {
-          console.log('hello');
-        };
-        $('#foo').bind('click', handler);
-        $('#foo').unbind('click', handler);
-        // function을 공유해야 제대로 이벤트가 동작하지 않는다.
-
-        $('#off1').on('click', function (event) {
-          $('#off2').off('click');
-          console.log('off2 클릭이 이벤트가 사라졌당.');
+        $('#target').focus(function () {
+          $(this).css('backgroundColor', 'dodgerblue');
         });
-        $('#off2').on('click', function (event) {
-          console.log('off2 클릭이 이벤트!!!');
+        $('#target').blur(function () {
+          $(this).css('backgroundColor', 'yellow');
+        });
+
+        $('#other').on('click', function () {
+          $('#target').focus();
+        });
+        $('#other2').on('click', function () {
+          $('#target').blur();
+        });
+
+        //focusin는 이벤트 버블링 지원해줌
+        $('.parent').focusin(function () {
+          console.log('parent focusin');
+        });
+        $('.focusin').focusin(function () {
+          console.log('input focusin');
+        });
+
+        $('.parent').focus(function () {
+          console.log('parent focus');
+        });
+        $('.focusin').focus(function () {
+          console.log('input focus');
         });
       });
     </script>
   </head>
   <body>
-    <button id="foo">버튼</button>
-    <button id="off1">버튼1</button>
-    <button id="off2">버튼2</button>
+    <form>
+      <input type="text" id="target" />
+    </form>
+    <button id="other">btn1</button>
+    <button id="other2">btn2</button>
+    <hr />
+    <div class="parent">
+      <input type="text" class="focusin" />
+    </div>
   </body>
 </html>
