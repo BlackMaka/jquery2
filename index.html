@@ -7,38 +7,33 @@
     <script src="./jquery-1.12.4.min.js"></script>
     <script>
       $(function () {
-        const arr = ['one', 'two', 'three', 'four', 'five'];
-        const obj = { one: 1, two: 2, three: 3, four: 4, five: 5 };
-
-        jQuery.each(arr, function (idx, Item) {
-          console.log(`${idx} : ${Item}`);
-          return Item !== 'three';
+        const arr = [1, 2, 3, 4, 5];
+        const rtnArr = jQuery.map(arr, function (item, idx) {
+          return item + 1;
         });
+        console.log(`rtnArr : ${rtnArr}`);
 
-        jQuery.each(obj, function (key, val) {
-          console.log(`${key} : ${val}`);
-          return val !== 3;
+        const Aarr = [1, 2];
+        const Barr = [4, 6, 7, 8];
+        const mergeArr = jQuery.merge(Aarr, Barr);
+        console.log(`mergeArr : ${mergeArr}`);
+
+        const obj1 = { apple: 1, banana: 2 };
+        const obj2 = { orange: 3, mango: 4 };
+        const mergObj = jQuery.extend(obj1, obj2);
+        console.log(`mergObj : ${JSON.stringify(mergObj)}`);
+
+        const divList = jQuery.makeArray($('div'));
+        const itemList = jQuery.map(divList, function (item, idx) {
+          return $(item).text();
         });
-
-        let bb = jQuery.grep(
-          arr,
-          function (item, idx) {
-            return item !== 'three';
-          },
-          true
-        );
-        console.log(bb);
-        //기본 값은 false임
-        bb = jQuery.grep(
-          arr,
-          function (item, idx) {
-            return item !== 'three';
-          },
-          false
-        );
-        console.log(bb);
+        console.log(itemList);
       });
     </script>
   </head>
-  <body></body>
+  <body>
+    <div>item1</div>
+    <div>item2</div>
+    <div>item3</div>
+  </body>
 </html>
