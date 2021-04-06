@@ -7,41 +7,40 @@
     <script src="./jquery-1.12.4.min.js"></script>
     <script>
       $(function () {
-        $('select').change(function () {
-          $('div').text($('option:selected').text());
+        $('#target').keydown(function (event) {
+          $('.div').text(event.keyCode);
+          //keyup, keypress
         });
 
-        $('input').select(function () {
-          $('p').text('select...').show().fadeOut(3000);
+        $('.box').click(function () {
+          console.log('클릭!');
+        });
+        $('.box').dblclick(function () {
+          console.log('더블 클릭!');
+        });
+        $('.box').mouseenter(function () {
+          console.log('마우스 엔터');
+        });
+        $('.box').mouseleave(function () {
+          console.log('마우스 리브 - mouseout은 버블링이 있음');
+        });
+        $('.box2').mousemove(function (event) {
+          console.log(`마우스 무브  X : ${event.pageX}, Y : ${event.pageY}`);
         });
 
-        $('#target').submit(function (event) {
-          let msg = '실패';
-          if ($('.text').val() == 'OK') {
-            msg = '성공';
-          }
-          $('.div').text(msg);
-          event.preventDefault();
+        $('li').hover(function () {
+          $(this).append($('<span>***</span>'));
         });
       });
     </script>
   </head>
   <body>
-    <select name="sweets">
-      <option>초콜릿</option>
-      <option>캔디</option>
-      <option selected>사탕</option>
-    </select>
-    <div></div>
-    <hr />
-    <input type="text" value="아이템1 아이템2" />
-    <input type="text" value="" />
-    <p></p>
-    <hr />
-    <form id="target">
-      <input type="text" class="text" />
-      <input type="submit" />
-    </form>
+    <input type="text" id="target" />
     <div class="div"></div>
+    <div class="box"></div>
+    <div class="box2"></div>
+    <ul>
+      <li></li>
+    </ul>
   </body>
 </html>
