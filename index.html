@@ -7,34 +7,23 @@
     <script src="./jquery-1.12.4.min.js"></script>
     <script>
       $(function () {
-        $('.inner').wrapInner('<div style="text-decoration:underline"></div>');
-        if ($('.unWrap').parent().is($('span'))) {
-          $('.unWrap').unwrap();
-        }
-        $('.second').replaceWith('<h3>D</h3>');
-        $('.third').replaceWith($('h5'));
-
-        $('<div>응 바꿀게</div>').replaceAll('.b');
+        $('.go').empty();
+        $('.dul').remove();
+        $('.hong').clone().appendTo($('p'));
+        $('button').click(function () {
+          $(this).clone(true).insertAfter(this);
+        });
       });
     </script>
   </head>
   <body>
-    <h5>하윙</h5>
     <div class="container">
-      <div class="inner">홍길동</div>
-      <div class="inner">고길동</div>
+      <div class="hong">홍길동</div>
+      <div class="go">고길동,<span> 희동이</span></div>
+      <div class="dul">둘리,<span> 도우너</span></div>
     </div>
-
-    <span>
-      <div class="unWrap">안녕</div>
-    </span>
-
-    <div class="first">A</div>
-    <div class="second">B</div>
-    <div class="third">C</div>
-
-    <div class="b">바꿔줘</div>
-    <div class="b">바꿔줘</div>
     <hr />
+    <p></p>
+    <button>복사하자</button>
   </body>
 </html>
