@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+
+    <script src="./jquery-1.12.4.min.js"></script>
+    <script>
+      $(function () {
+        $('.chgImg').click(function () {
+          $('img').attr({
+            src: 'korea.jpg',
+            width: 200,
+            height: 200,
+          });
+        });
+        $('.checkAll').click(function () {
+          $('input[type="checkbox"]').prop('checked', true);
+        });
+        $('.checkNot').click(function () {
+          $('input[type="checkbox"]').removeAttr('checked');
+        });
+        $('.move').click(function () {
+          let text = $('.to').text();
+          $('.to').text('');
+          $('.from').val(text);
+        });
+        let pHtml = $('p:first').html();
+        $('p:last').html(pHtml);
+      });
+    </script>
+  </head>
+  <body>
+    <img src="france.png" alt="" />
+    <button class="chgImg">클릭</button>
+
+    <hr />
+    <input type="checkbox" />
+    <input type="checkbox" />
+    <button class="checkAll">체크올</button>
+    <button class="checkNot">체크낫</button>
+    <hr />
+    <div class="to">옮겨줭</div>
+    <input type="text" class="from" />
+    <button class="move">옮기기</button>
+    <hr />
+    <p>퍼스트</p>
+    <p></p>
+  </body>
+</html>
