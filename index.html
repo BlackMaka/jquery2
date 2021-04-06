@@ -7,7 +7,18 @@
     <script>
       $(function () {
         $('#html').click(function () {
-          $('#result').load('test.html #sub');
+          $.get('test.html', function (data) {
+            $('#result').html(data);
+          })
+            .done(function () {
+              console.log('success');
+            })
+            .fail(function () {
+              console.log('fail');
+            })
+            .always(function () {
+              console.log('finished');
+            });
         });
       });
     </script>
