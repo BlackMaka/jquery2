@@ -7,9 +7,14 @@
     <script src="./jquery-1.12.4.min.js"></script>
     <script>
       $(function () {
-        $('.inner').wrap('<h2 style="color:red"></h2>');
-        $('.inner').wrap($('h5'));
-        $('p').wrapAll('<div style="border:1px solid dodgerblue"></div>');
+        $('.inner').wrapInner('<div style="text-decoration:underline"></div>');
+        if ($('.unWrap').parent().is($('span'))) {
+          $('.unWrap').unwrap();
+        }
+        $('.second').replaceWith('<h3>D</h3>');
+        $('.third').replaceWith($('h5'));
+
+        $('<div>응 바꿀게</div>').replaceAll('.b');
       });
     </script>
   </head>
@@ -19,11 +24,17 @@
       <div class="inner">홍길동</div>
       <div class="inner">고길동</div>
     </div>
-    <hr />
 
-    <p>가나다</p>
-    <div>아아앙</div>
-    <p>라마바</p>
-    <p>사아자</p>
+    <span>
+      <div class="unWrap">안녕</div>
+    </span>
+
+    <div class="first">A</div>
+    <div class="second">B</div>
+    <div class="third">C</div>
+
+    <div class="b">바꿔줘</div>
+    <div class="b">바꿔줘</div>
+    <hr />
   </body>
 </html>
