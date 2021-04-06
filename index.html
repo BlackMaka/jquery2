@@ -7,23 +7,38 @@
     <script src="./jquery-1.12.4.min.js"></script>
     <script>
       $(function () {
-        $('.go').empty();
-        $('.dul').remove();
-        $('.hong').clone().appendTo($('p'));
-        $('button').click(function () {
-          $(this).clone(true).insertAfter(this);
+        const arr = ['one', 'two', 'three', 'four', 'five'];
+        const obj = { one: 1, two: 2, three: 3, four: 4, five: 5 };
+
+        jQuery.each(arr, function (idx, Item) {
+          console.log(`${idx} : ${Item}`);
+          return Item !== 'three';
         });
+
+        jQuery.each(obj, function (key, val) {
+          console.log(`${key} : ${val}`);
+          return val !== 3;
+        });
+
+        let bb = jQuery.grep(
+          arr,
+          function (item, idx) {
+            return item !== 'three';
+          },
+          true
+        );
+        console.log(bb);
+        //기본 값은 false임
+        bb = jQuery.grep(
+          arr,
+          function (item, idx) {
+            return item !== 'three';
+          },
+          false
+        );
+        console.log(bb);
       });
     </script>
   </head>
-  <body>
-    <div class="container">
-      <div class="hong">홍길동</div>
-      <div class="go">고길동,<span> 희동이</span></div>
-      <div class="dul">둘리,<span> 도우너</span></div>
-    </div>
-    <hr />
-    <p></p>
-    <button>복사하자</button>
-  </body>
+  <body></body>
 </html>
